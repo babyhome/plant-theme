@@ -19,6 +19,8 @@ $brand-body-bg: #f9f7f7;
 $input-border-focus: $brand-primary !default;
 $form-group-margin-bottom: 30px !default;
 
+
+
 // Mixin
 @mixin transition($transition) {
 	-moz-transition:    all $transition ease;
@@ -288,22 +290,133 @@ h1, h2, h3, h4, h5, h6 {
 			margin: 0;
 			list-style: none;
 			text-align: left;
+			a {
+				outline: 1px dashed red;
+				display: block;
+				color: rgba(0, 0, 0, 1);
+				font-size: 14px;
+				font-weight: 400;
+				padding: 10px 0;
+				text-transform: uppercase;
+
+				@include media-breakpoint-down(sm) {
+					font-size: 16px;
+				}
+				&:hover, &:active, &:focus {
+					color: rgba(0,0,0,1);
+					outline: none;
+					text-decoration: none;
+				}
+			}
+			&.active {
+				a {
+					color: $brand-primary;
+				}
+			}
+		}
+	}
+
+	// SEARCH
+	.form-group {
+		margin-bottom: 40px;
+		position: relative;
+		width: 100%;
+
+		@include media-breakpoint-down(sm) {
+			width: 100%;
+		}
+		input::-webkit-input-placeholder {
+			color: lighten($brand-black,20%);
+		}
+		input::-moz-input-placeholder {
+			color: lighten($brand-black,20%);
+		}
+		input::-ms-input-placeholder {
+			color: lighten($brand-black,20%);
+		}
+		input::-o-input-placeholder {
+			color: lighten($brand-black,20%);
+		}
+		input::input-placeholder {
+			color: lighten($brand-black,20%);
+		}
+	}
+	#search {
+		font-size: 14px;
+		width: 100%;
+		padding-right: 3em;
+		border: none;
+		border: 2px solid lighten($brand-black,95%);
+		background:lighten($brand-black,98%);
+		color: lighten($brand-black,20%) !important;
+	}
+	button {
+		position: absolute;
+		top: 0;
+		right: -4px;
+		@include border-radius(0);
+		background: $brand-primary;
+		color: $brand-white;
+		border: none;
+		padding: 16px;
+	}
+	#email{
+		font-size: 18px;
+		width: 100%;
+		border: none;
+		border: 2px solid $brand-white;
+		background:$brand-white;
+		color: lighten($brand-black,20%) !important;	
+	}
+
+	//GALLERY
+	.gallery{
+		float: left;
+		width: 50%;
+		height: 150px;
+		position: relative;
+		display: table;
+		z-index: 0;
+		text-decoration: none;
+		@include media-breakpoint-down(sm) {
+			width: 25%;
+		}
+		@include media-breakpoint-down(xs) {
+			width: 50%;
+		}
+		&:after{
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			content: '';
+			background: rgba($brand-black,.3);
+			opacity: 0;
+			z-index: -1;
+			@include transition(.3s);
+		}
+		span{
+			display: table-cell;
+			vertical-align: middle;
+			height: 150px;
+			opacity: 0;
+			@include transition(1s);
+			i{
+				color: $brand-white;
+				font-size: 20px;
+			}
+		}
+		&:hover, &:focus{
+			&:after{
+				opacity: 1;
+			}
+			span{
+				opacity: 1;
+			}
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
